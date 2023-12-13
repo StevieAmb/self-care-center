@@ -59,7 +59,17 @@ const clearMessage = () => {
 const addOwnMessage = () => {
   formTitle.textContent = "What type of message are you entering?"
   show([userInputField, submitInputButton])
-  hide([meditateImage, receiveButton])
+  hide([meditateImage, receiveButton, userMessage])
+  const choiceSelected = affirmRadioButton.checked || mantraRadioButton.checked
+  if(choiceSelected) {
+    userMessage.classList.remove('error-message')
+    show([userMessage])
+    userMessage.innerHTML = userInputField.value
+  } else {
+    userMessage.classList.add('error-message')
+    userMessage.textContent = `You need to choose a message type.`
+    show([userMessage])
+  }
 }
 
 const show = (elements) => {

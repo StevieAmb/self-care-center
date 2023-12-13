@@ -86,6 +86,14 @@ hr {
   border-radius: .5rem;
 }
 
+@media (min-width: 1000px) {
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 40px
+  }
+}
+
 .hidden {
   display: none;
 }

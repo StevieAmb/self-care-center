@@ -36,8 +36,8 @@ const getRandomIndex = (array) => {
 }
 
 const showUserChoice = () => {
-  meditateImage.classList.add('hidden')
-  clearLink.classList.remove('hidden')
+  hide([meditateImage])
+  show([clearLink])
   userMessage.classList.remove('error-message')
   let noChoiceSelected = !affirmRadioButton.checked || !mantraRadioButton.checked
   if(affirmRadioButton.checked) {
@@ -58,24 +58,24 @@ const clearMessage = () => {
 
 const addOwnMessage = () => {
   formTitle.textContent = "What type of message are you entering?"
-  meditateImage.classList.add('hidden')
-  receiveButton.classList.add('hidden')
-  userInputField.classList.remove('hidden')
-  submitInputButton.classList.remove('hidden')
+  show([userInputField, submitInputButton])
+  hide([meditateImage, receiveButton])
+}
 
+const show = (elements) => {
+  elements.forEach(element => element.classList.remove('hidden'));
+}
 
+const hide = (elements) => {
+  elements.forEach(element => element.classList.add('hidden'));
 }
 
 receiveButton.addEventListener('click', showUserChoice)
 clearLink.addEventListener('click', clearMessage)
 addGem.addEventListener('click', addOwnMessage)
+submitInputButton.addEventListener('click', addOwnMessage)
 
 
-//The add gem button needs to
-//It needs to either hide the receive message button and the
-//Thematic line
-//It needs to show the input field, an "Add message button"
-//It needs to have queried the input field
 //It needs to push the message into the affirmation or mantra array
 //It needs to... show the message immediately, and then iterate again?
 //Local storage?

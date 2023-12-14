@@ -51,7 +51,7 @@ const showUserChoice = () => {
 }
 
 const clearMessage = () => {
-  userMessage.textContent = ''
+  userMessage.innerHTML = ''
   meditateImage.classList.remove('hidden')
   clearLink.classList.add('hidden')
 }
@@ -60,15 +60,25 @@ const addOwnMessage = () => {
   formTitle.textContent = "What type of message are you entering?"
   show([userInputField, submitInputButton])
   hide([meditateImage, receiveButton, userMessage])
-  const choiceSelected = affirmRadioButton.checked || mantraRadioButton.checked
-  if(choiceSelected) {
-    userMessage.classList.remove('error-message')
+  let noChoiceSelected = !affirmRadioButton.checked || !mantraRadioButton.checked
+  if(affirmRadioButton.checked) {
     show([userMessage])
+    userMessage.classList.remove('error-message')
+    affirmations.push(userInputField.value)
+    userMessage.textContent = userInputField.value
+    userInputField.value && hide([userInputField, submitInputButton])
+    userInputField.value && show([receiveButton, clearLink])
+  } else if(mantraRadioButton.checked) {
+    show([userMessage])
+    userMessage.classList.remove('error-message')
+    mantras.push(userInputField.value)
     userMessage.innerHTML = userInputField.value
-  } else {
+    userInputField.value && hide([userInputField, submitInputButton])
+    userInputField.value && show([receiveButton, clearLink])
+  } else if(noChoiceSelected) {
+    show([userMessage])
     userMessage.classList.add('error-message')
     userMessage.textContent = `You need to choose a message type.`
-    show([userMessage])
   }
 }
 
@@ -89,3 +99,5 @@ submitInputButton.addEventListener('click', addOwnMessage)
 //It needs to push the message into the affirmation or mantra array
 //It needs to... show the message immediately, and then iterate again?
 //Local storage?
+
+//Make  a clear form button, or hide the form

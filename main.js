@@ -66,13 +66,18 @@ const addOwnMessageToDataSet = () => {
 }
 
 const showSubmitGemField = () => {
-  userMessage.classList.remove('error-message')
   checkForChoiceSelection()
+  userMessage.classList.remove('error-message')
   hide([meditateImage, receiveButton, userMessage])
   show([userInputField, submitInputButton])
   showErrorMessage()
 }
 
+//It checks for the choice selection when you turn the page,
+//And then disables the button if nothing is clicked
+//However, I need to be able to re-enable the button after the user
+//clicks one of the buttons
+//Maybe another function that happens AFTER you turn the page
 
 const checkForChoiceSelection = () => {
   let choiceSelected = affirmRadioButton.checked || mantraRadioButton.checked

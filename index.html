@@ -9,17 +9,19 @@
     <section class="pick-words">
       <div class="user-choice-section">
         <h3 id="form-title">What type of messages do you need today?</h3>
-        <div class="word-choice-radio-buttons">
-          <div>
-            <input type="radio" id="affirm" name="self-care" value="affirmation"/>
-            <label for="affirm">Affirmation</label>
-          </div>
-          <div>
-            <input type="radio" id="mantra" name="self-care" value="mantra" />
-            <label for="mantra">Mantra</label>
-          </div>
-        </div>
-        <button id="receive-button" class="submit-receive-message-btn">Receive Message</button>
+        <form>
+          <section class="word-choice-radio-buttons">
+            <div>
+              <input type="radio" id="affirm" name="self-care" value="affirmation"/>
+              <label for="affirm">Affirmation</label>
+            </div>
+            <div>
+              <input type="radio" id="mantra" name="self-care" value="mantra" />
+              <label for="mantra">Mantra</label>
+            </div>
+          </section>
+          <button id="receive-button" class="submit-receive-message-btn">Receive Message</button>
+        </form>
         <hr>
         <p id="user-message"></p>
         <div class="user-gems">

@@ -81,6 +81,7 @@ const checkForChoiceSelection = () => {
   } else {
     submitInputButton.disabled = false
     submitInputButton.classList.remove('grey')
+    userMessage.classList.remove('error-message')
     userMessage.textContent = ''
   }
 }

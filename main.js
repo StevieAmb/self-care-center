@@ -45,9 +45,8 @@ const showUserChoice = (e) => {
     userMessage.textContent = `${affirmations[getRandomIndex(affirmations)]}`
   } else if (mantraRadioButton.checked) {
     userMessage.textContent = `${mantras[getRandomIndex(mantras)]}`
-  } else if(noChoiceSelected) {
-    userMessage.classList.add('error-message')
-    userMessage.textContent = `You need to choose a message type.`
+  } else {
+    showSelectionErrorMessage()
   }
 }
 
@@ -57,6 +56,14 @@ const clearMessage = () => {
   clearLink.classList.add('hidden')
 }
 
+const showSubmitGemField = () => {
+  checkForChoiceSelection()
+  userMessage.classList.remove('error-message')
+  hide([meditateImage, receiveButton, userMessage])
+  show([userInputField, submitInputButton])
+  showUserInputErrorMessage()
+}
+
 const addOwnMessageToDataSet = () => {
   if(affirmRadioButton.checked) {
     affirmations.push(userInputField.value !== "" && userInputField.value)
@@ -64,20 +71,6 @@ const addOwnMessageToDataSet = () => {
     mantras.push(userInputField.value !== "" && userInputField.value)
   }
 }
-
-const showSubmitGemField = () => {
-  checkForChoiceSelection()
-  userMessage.classList.remove('error-message')
-  hide([meditateImage, receiveButton, userMessage])
-  show([userInputField, submitInputButton])
-  showErrorMessage()
-}
-
-//It checks for the choice selection when you turn the page,
-//And then disables the button if nothing is clicked
-//However, I need to be able to re-enable the button after the user
-//clicks one of the buttons
-//Maybe another function that happens AFTER you turn the page
 
 const checkForChoiceSelection = () => {
   submitInputButton.classList.remove('grey')
@@ -92,7 +85,19 @@ const checkForChoiceSelection = () => {
   }
 }
 
-const showErrorMessage = () => {
+const showUserInputErrorMessage = () => {
+  let noChoiceSelected = !affirmRadioButton.checked && !mantraRadioButton.checked
+  console.log(noChoiceSelected)
+  if(noChoiceSelected) {
+    show([userMessage])
+    userMessage.classList.add('error-message')
+    userMessage.textContent = 'Pick a message type, then type in your message.'
+  } else {
+    userMessage.classList.remove('error-message')
+  }
+}
+
+const showSelectionErrorMessage = () => {
   let noChoiceSelected = !affirmRadioButton.checked && !mantraRadioButton.checked
   console.log(noChoiceSelected)
   if(noChoiceSelected) {

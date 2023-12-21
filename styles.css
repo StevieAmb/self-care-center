@@ -94,6 +94,11 @@ hr {
   }
 }
 
+.grey {
+  background-color: gray;
+  color: red;
+}
+
 .hidden {
   display: none;
 }

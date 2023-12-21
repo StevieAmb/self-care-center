@@ -80,11 +80,15 @@ const showSubmitGemField = () => {
 //Maybe another function that happens AFTER you turn the page
 
 const checkForChoiceSelection = () => {
+  submitInputButton.classList.remove('grey')
   let choiceSelected = affirmRadioButton.checked || mantraRadioButton.checked
   if(!choiceSelected) {
     submitInputButton.disabled = true
+    submitInputButton.classList.add('grey')
   } else {
     submitInputButton.disabled = false
+    submitInputButton.classList.remove('grey')
+    userMessage.textContent = ''
   }
 }
 
@@ -109,12 +113,24 @@ const submitMessage = () => {
   userInputField.textContent = ""
 }
 
-//BUG, there's an empty message in the array, after the user adds a gem.
-//Interesting.
 
 //Separation of tasks.
 //One function for adding to the array,
 //One function for showing the message
+
+//What I need to do:
+// - Need to add another check after the page is turned, because,
+//There's one check when the page is turned that checks if it's checked, the button
+//And if it is, you can write and submit message, however
+//If it's not, then you can't. 
+//We need to be able to have something that checks if the user adds a message
+//AFTER they get the error message telling them they need to.
+
+//Two ways
+//1. Add another part to the form that has the user pick again,
+//2. Add an event listener that checks the buttons again after the user
+//clicks into the form field. 
+
 
 const show = (elements) => {
   elements.forEach(element => element.classList.remove('hidden'));
@@ -128,6 +144,7 @@ receiveButton.addEventListener('click', (e) =>  showUserChoice(e))
 clearLink.addEventListener('click', clearMessage)
 addGem.addEventListener('click', showSubmitGemField)
 submitInputButton.addEventListener('click', submitMessage)
+userInputField.addEventListener('click', checkForChoiceSelection )
 
 
 //BUG

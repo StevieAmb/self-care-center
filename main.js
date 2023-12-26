@@ -9,6 +9,7 @@ let addGem = document.getElementById('add-gem')
 let formTitle = document.getElementById('form-title')
 let userInputField = document.getElementById('user-input-message')
 let submitInputButton = document.getElementById('submit-message')
+let favoriteButton = document.getElementById('favorite-button')
 
 let affirmations = 
 ['I alone hold the truth of who I am.', 
@@ -42,8 +43,10 @@ const showUserChoice = (e) => {
   userMessage.classList.remove('error-message')
   if(affirmRadioButton.checked) {
     userMessage.textContent = `${affirmations[getRandomIndex(affirmations)]}`
+    favoriteButton.classList.remove('hidden')
   } else if (mantraRadioButton.checked) {
     userMessage.textContent = `${mantras[getRandomIndex(mantras)]}`
+    favoriteButton.classList.remove('hidden')
   } else {
     showSelectionErrorMessage()
   }

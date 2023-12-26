@@ -54,6 +54,11 @@ hr {
   font-weight: lighter;
 }
 
+#favorite-button:hover {
+  filter: saturate(10);
+  cursor: pointer;
+}
+
 .clear-message-link {
   color: lightskyblue;
   text-decoration: underline;

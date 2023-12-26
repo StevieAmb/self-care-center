@@ -40,7 +40,6 @@ const showUserChoice = (e) => {
   hide([meditateImage])
   show([clearLink])
   userMessage.classList.remove('error-message')
-  let noChoiceSelected = !affirmRadioButton.checked || !mantraRadioButton.checked
   if(affirmRadioButton.checked) {
     userMessage.textContent = `${affirmations[getRandomIndex(affirmations)]}`
   } else if (mantraRadioButton.checked) {
@@ -57,6 +56,7 @@ const clearMessage = () => {
 }
 
 const showSubmitGemField = () => {
+  formTitle.textContent = "What type of message are you entering?"
   checkForChoiceSelection()
   userMessage.classList.remove('error-message')
   hide([meditateImage, receiveButton, userMessage])
@@ -70,6 +70,7 @@ const addOwnMessageToDataSet = () => {
   } else {
     mantras.push(userInputField.value !== "" && userInputField.value)
   }
+  formTitle.textContent = "What type of messages do you need today?"
 }
 
 const checkForChoiceSelection = () => {
@@ -112,11 +113,9 @@ const showSelectionErrorMessage = () => {
 
 const submitMessage = () => {
   addOwnMessageToDataSet()
-  formTitle.textContent = "What type of message are you entering?"
   userMessage.textContent = userInputField.value
   show([clearLink, receiveButton, userMessage])
   hide([userInputField, submitInputButton])
-  userInputField.textContent = ""
 }
 
 

@@ -10,6 +10,7 @@ let formTitle = document.getElementById('form-title')
 let userInputField = document.getElementById('user-input-message')
 let submitInputButton = document.getElementById('submit-message')
 let favoriteButton = document.getElementById('favorite-button')
+let addedMessage = document.getElementById('added-message')
 
 let affirmations = 
 ['I alone hold the truth of who I am.', 
@@ -130,6 +131,10 @@ const addFavoriteMessage = () => {
   } else {
     favoriteMantras.push(userMessage.textContent)
   }
+  hide([favoriteButton])
+  show([addedMessage])
+
+
 }
 
 const show = (elements) => {

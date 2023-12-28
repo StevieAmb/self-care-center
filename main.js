@@ -9,6 +9,7 @@ let addGem = document.getElementById('add-gem')
 let formTitle = document.getElementById('form-title')
 let userInputField = document.getElementById('user-input-message')
 let submitInputButton = document.getElementById('submit-message')
+let favoriteButton = document.getElementById('favorite-button')
 
 let affirmations = 
 ['I alone hold the truth of who I am.', 
@@ -31,6 +32,9 @@ let mantras = [
   "Divine love flows through me, offering comfort and healing to those in need."
 ]
 
+let favoriteMantras = []
+let favoriteAffirmations = []
+
 const getRandomIndex = (array) => {
   return Math.floor(Math.random() * array.length);
 }
@@ -42,8 +46,10 @@ const showUserChoice = (e) => {
   userMessage.classList.remove('error-message')
   if(affirmRadioButton.checked) {
     userMessage.textContent = `${affirmations[getRandomIndex(affirmations)]}`
+    favoriteButton.classList.remove('hidden')
   } else if (mantraRadioButton.checked) {
     userMessage.textContent = `${mantras[getRandomIndex(mantras)]}`
+    favoriteButton.classList.remove('hidden')
   } else {
     showSelectionErrorMessage()
   }
@@ -64,7 +70,7 @@ const showSubmitGemField = () => {
   showUserInputErrorMessage()
 }
 
-const addOwnMessageToDataSet = () => {
+const addUserMessageToDataSets = () => {
   if(affirmRadioButton.checked) {
     affirmations.push(userInputField.value !== "" && userInputField.value)
   } else {
@@ -89,7 +95,6 @@ const checkForChoiceSelection = () => {
 
 const showUserInputErrorMessage = () => {
   let noChoiceSelected = !affirmRadioButton.checked && !mantraRadioButton.checked
-  console.log(noChoiceSelected)
   if(noChoiceSelected) {
     show([userMessage])
     userMessage.classList.add('error-message')
@@ -112,30 +117,20 @@ const showSelectionErrorMessage = () => {
 }
 
 const submitMessage = () => {
-  addOwnMessageToDataSet()
+  addUserMessageToDataSets()
   userMessage.textContent = userInputField.value
   show([clearLink, receiveButton, userMessage])
   hide([userInputField, submitInputButton])
 }
 
-
-//Separation of tasks.
-//One function for adding to the array,
-//One function for showing the message
-
-//What I need to do:
-// - Need to add another check after the page is turned, because,
-//There's one check when the page is turned that checks if it's checked, the button
-//And if it is, you can write and submit message, however
-//If it's not, then you can't. 
-//We need to be able to have something that checks if the user adds a message
-//AFTER they get the error message telling them they need to.
-
-//Two ways
-//1. Add another part to the form that has the user pick again,
-//2. Add an event listener that checks the buttons again after the user
-//clicks into the form field. 
-
+const addFavoriteMessage = () => {
+  //Check which button is clicked, and then add it to either favorite Mantras, or affirmations
+  if(mantraRadioButton.checked) {
+    favoriteAffirmations.push(userMessage.textContent)
+  } else {
+    favoriteMantras.push(userMessage.textContent)
+  }
+}
 
 const show = (elements) => {
   elements.forEach(element => element.classList.remove('hidden'));
@@ -149,7 +144,8 @@ receiveButton.addEventListener('click', (e) =>  showUserChoice(e))
 clearLink.addEventListener('click', clearMessage)
 addGem.addEventListener('click', showSubmitGemField)
 submitInputButton.addEventListener('click', submitMessage)
-userInputField.addEventListener('click', checkForChoiceSelection )
+userInputField.addEventListener('click', checkForChoiceSelection)
+favoriteButton.addEventListener('click', addFavoriteMessage)
 
 
 //BUG

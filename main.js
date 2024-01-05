@@ -11,6 +11,7 @@ let userInputField = document.getElementById('user-input-message')
 let submitInputButton = document.getElementById('submit-message')
 let favoriteButton = document.getElementById('favorite-button')
 let addedMessage = document.getElementById('added-message')
+let favoriteMessagesCheckbox = document.getElementById('favorite-messages-list-choice')
 
 let affirmations = 
 ['I alone hold the truth of who I am.', 
@@ -53,6 +54,18 @@ const showUserChoice = (e) => {
     favoriteButton.classList.remove('hidden')
   } else {
     showSelectionErrorMessage()
+  }
+}
+
+const showSelectionErrorMessage = () => {
+  let noChoiceSelected = !affirmRadioButton.checked && !mantraRadioButton.checked
+  console.log(noChoiceSelected)
+  if(noChoiceSelected) {
+    show([userMessage])
+    userMessage.classList.add('error-message')
+    userMessage.textContent = `You need to choose a message type.`
+  } else {
+    userMessage.classList.remove('error-message')
   }
 }
 
@@ -105,18 +118,6 @@ const showUserInputErrorMessage = () => {
   }
 }
 
-const showSelectionErrorMessage = () => {
-  let noChoiceSelected = !affirmRadioButton.checked && !mantraRadioButton.checked
-  console.log(noChoiceSelected)
-  if(noChoiceSelected) {
-    show([userMessage])
-    userMessage.classList.add('error-message')
-    userMessage.textContent = `You need to choose a message type.`
-  } else {
-    userMessage.classList.remove('error-message')
-  }
-}
-
 const submitMessage = () => {
   addUserMessageToDataSets()
   userMessage.textContent = userInputField.value
@@ -124,17 +125,27 @@ const submitMessage = () => {
   hide([userInputField, submitInputButton])
 }
 
+const checkInputMessageLength = () => {
+  submitInputButton.disabled = false
+  if(userInputField.value.length < 10) {
+    userMessage.classList.add('error-message')
+    userMessage.textContent = 'Make sure your message is at least 10 characters in length.'
+    submitInputButton.disabled = true
+  } else {
+    submitMessage()
+  }
+}
+
 const addFavoriteMessage = () => {
-  //Check which button is clicked, and then add it to either favorite Mantras, or affirmations
   if(mantraRadioButton.checked) {
     favoriteAffirmations.push(userMessage.textContent)
+    hide([favoriteButton])
+    show([addedMessage, favoriteMessagesCheckbox])
   } else {
     favoriteMantras.push(userMessage.textContent)
+    hide([favoriteButton])
+    show([addedMessage, favoriteMessagesCheckbox])
   }
-  hide([favoriteButton])
-  show([addedMessage])
-
-
 }
 
 const show = (elements) => {
@@ -148,10 +159,17 @@ const hide = (elements) => {
 receiveButton.addEventListener('click', (e) =>  showUserChoice(e))
 clearLink.addEventListener('click', clearMessage)
 addGem.addEventListener('click', showSubmitGemField)
-submitInputButton.addEventListener('click', submitMessage)
+submitInputButton.addEventListener('click', checkInputMessageLength)
 userInputField.addEventListener('click', checkForChoiceSelection)
 favoriteButton.addEventListener('click', addFavoriteMessage)
 
+//Error messaging that checks the length of the message that is being sent.
 
-//BUG
-// - The user can submit a 
+//So, there's two things, 
+//First thing is, check the length of the message (value of the input field)
+//Show an error message if the length is not long enough
+
+//You shouldn't be able to push the message into the array of messages IF it isn't long enough
+//You probably shouldn't be able to click the button either?
+//So disable the button, but keep it green, instead of grey. So there's a separation there,
+//And it makes sense which error you're getting.

@@ -136,6 +136,9 @@ const checkInputMessageLength = () => {
   }
 }
 
+//The error message shows when I don't pick a type when I am going to submit
+//But it doesn't show when I have picked a type of message to input
+
 const addFavoriteMessage = () => {
   if(mantraRadioButton.checked) {
     hide([favoriteButton])

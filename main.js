@@ -11,6 +11,7 @@ let userInputField = document.getElementById('user-input-message')
 let submitInputButton = document.getElementById('submit-message')
 let favoriteButton = document.getElementById('favorite-button')
 let addedMessage = document.getElementById('added-message')
+let favoriteMessagesCheckbox = document.getElementById('favorite-messages-list-choice')
 
 let affirmations = 
 ['I alone hold the truth of who I am.', 
@@ -53,6 +54,18 @@ const showUserChoice = (e) => {
     favoriteButton.classList.remove('hidden')
   } else {
     showSelectionErrorMessage()
+  }
+}
+
+const showSelectionErrorMessage = () => {
+  let noChoiceSelected = !affirmRadioButton.checked && !mantraRadioButton.checked
+  console.log(noChoiceSelected)
+  if(noChoiceSelected) {
+    show([userMessage])
+    userMessage.classList.add('error-message')
+    userMessage.textContent = `You need to choose a message type.`
+  } else {
+    userMessage.classList.remove('error-message')
   }
 }
 
@@ -105,18 +118,6 @@ const showUserInputErrorMessage = () => {
   }
 }
 
-const showSelectionErrorMessage = () => {
-  let noChoiceSelected = !affirmRadioButton.checked && !mantraRadioButton.checked
-  console.log(noChoiceSelected)
-  if(noChoiceSelected) {
-    show([userMessage])
-    userMessage.classList.add('error-message')
-    userMessage.textContent = `You need to choose a message type.`
-  } else {
-    userMessage.classList.remove('error-message')
-  }
-}
-
 const submitMessage = () => {
   addUserMessageToDataSets()
   userMessage.textContent = userInputField.value
@@ -125,16 +126,15 @@ const submitMessage = () => {
 }
 
 const addFavoriteMessage = () => {
-  //Check which button is clicked, and then add it to either favorite Mantras, or affirmations
   if(mantraRadioButton.checked) {
     favoriteAffirmations.push(userMessage.textContent)
+    hide([favoriteButton])
+    show([addedMessage, favoriteMessagesCheckbox])
   } else {
     favoriteMantras.push(userMessage.textContent)
+    hide([favoriteButton])
+    show([addedMessage, favoriteMessagesCheckbox])
   }
-  hide([favoriteButton])
-  show([addedMessage])
-
-
 }
 
 const show = (elements) => {
@@ -152,6 +152,3 @@ submitInputButton.addEventListener('click', submitMessage)
 userInputField.addEventListener('click', checkForChoiceSelection)
 favoriteButton.addEventListener('click', addFavoriteMessage)
 
-
-//BUG
-// - The user can submit a 

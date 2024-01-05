@@ -1,11 +1,4 @@
-/* font-family: 'Quicksand', sans-serif;
-COLORS
-light-yellow - #f7e4bf;
-light-blue - #78a7c6;
-dark-blue - #134d71;
-white - #ffffff;
-black - #000000;
-*/
+
 
 body {
   height: 100vh;
@@ -13,11 +6,16 @@ body {
   flex-direction: column;
   align-items: center;
   font-family: 'Quicksand', sans-serif;
-  background-image: linear-gradient(rgb(99, 192, 99), #B4D435);
+  background-image: linear-gradient(rgb(147, 182, 147), #B4D435);
 }
 
 .pick-words {
   text-align: center;
+}
+
+.choose-favorite-message-list-view {
+  width: 8rem;
+  margin-bottom: 10px;
 }
 
 .user-choice-section {
@@ -96,7 +94,7 @@ hr {
       height:0;
       visibility:hidden;
   }
-} */
+} 
 
 #user-message {
   margin-top: 3.8rem;
@@ -134,4 +132,7 @@ hr {
 
 .hidden {
   display: none;
+  /* visibility: hidden;
+  overflow: hidden; */
 }
+

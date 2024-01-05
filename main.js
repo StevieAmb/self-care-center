@@ -138,13 +138,13 @@ const checkInputMessageLength = () => {
 
 const addFavoriteMessage = () => {
   if(mantraRadioButton.checked) {
+    hide([favoriteButton])
+    show([addedMessage, favoriteMessagesCheckbox])
     favoriteAffirmations.push(userMessage.textContent)
-    hide([favoriteButton])
-    show([addedMessage, favoriteMessagesCheckbox])
   } else {
-    favoriteMantras.push(userMessage.textContent)
     hide([favoriteButton])
     show([addedMessage, favoriteMessagesCheckbox])
+    favoriteMantras.push(userMessage.textContent)
   }
 }
 

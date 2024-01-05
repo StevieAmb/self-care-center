@@ -126,6 +126,7 @@ const submitMessage = () => {
 }
 
 const checkInputMessageLength = () => {
+  submitInputButton.disabled = false
   if(userInputField.value.length < 10) {
     userMessage.classList.add('error-message')
     userMessage.textContent = 'Make sure your message is at least 10 characters in length.'

@@ -125,6 +125,16 @@ const submitMessage = () => {
   hide([userInputField, submitInputButton])
 }
 
+const checkInputMessageLength = () => {
+  if(userInputField.value.length < 10) {
+    userMessage.classList.add('error-message')
+    userMessage.textContent = 'Make sure your message is at least 10 characters in length.'
+    submitInputButton.disabled = true
+  } else {
+    submitMessage()
+  }
+}
+
 const addFavoriteMessage = () => {
   if(mantraRadioButton.checked) {
     favoriteAffirmations.push(userMessage.textContent)
@@ -148,7 +158,17 @@ const hide = (elements) => {
 receiveButton.addEventListener('click', (e) =>  showUserChoice(e))
 clearLink.addEventListener('click', clearMessage)
 addGem.addEventListener('click', showSubmitGemField)
-submitInputButton.addEventListener('click', submitMessage)
+submitInputButton.addEventListener('click', checkInputMessageLength)
 userInputField.addEventListener('click', checkForChoiceSelection)
 favoriteButton.addEventListener('click', addFavoriteMessage)
 
+//Error messaging that checks the length of the message that is being sent.
+
+//So, there's two things, 
+//First thing is, check the length of the message (value of the input field)
+//Show an error message if the length is not long enough
+
+//You shouldn't be able to push the message into the array of messages IF it isn't long enough
+//You probably shouldn't be able to click the button either?
+//So disable the button, but keep it green, instead of grey. So there's a separation there,
+//And it makes sense which error you're getting.

@@ -57,7 +57,7 @@ hr {
   cursor: pointer;
 }
 
-.clear-message-link {
+.clear-message-link, .favorite-messages {
   color: lightskyblue;
   text-decoration: underline;
   cursor: pointer;
@@ -98,6 +98,10 @@ hr {
 
 #user-message {
   margin-top: 3.8rem;
+}
+
+.change-color {
+  background-color: red;
 }
 
 .add-gem-line {

@@ -12,6 +12,9 @@ let submitInputButton = document.getElementById('submit-message')
 let favoriteButton = document.getElementById('favorite-button')
 let addedMessage = document.getElementById('added-message')
 let favoriteMessagesLink = document.getElementById('favorite-messages-list-choice')
+let centerBody = document.getElementById('user-choice-section')
+let firstContainer = document.getElementById('first-container')
+let secondContainer = document.getElementById('second-container')
 
 let affirmations = 
 ['I alone hold the truth of who I am.', 
@@ -153,6 +156,12 @@ const addFavoriteMessage = () => {
   }
 }
 
+const flipCard = () => {
+  firstContainer.classList.add('spin')
+  secondContainer.classList.add('spin')
+
+}
+
 const show = (elements) => {
   elements.forEach(element => element.classList.remove('hidden'));
 }
@@ -167,6 +176,7 @@ addGem.addEventListener('click', showSubmitGemField)
 submitInputButton.addEventListener('click', checkInputMessageLength)
 userInputField.addEventListener('click', checkForChoiceSelection)
 favoriteButton.addEventListener('click', addFavoriteMessage)
+favoriteMessagesLink.addEventListener('click', flipCard)
 
 //Error messaging that checks the length of the message that is being sent.
 

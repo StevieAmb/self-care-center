@@ -9,6 +9,37 @@ body {
   background-image: linear-gradient(rgb(147, 182, 147), #B4D435);
 }
 
+.first-container {
+  background-color: transparent;
+  width: 300px;
+  height: 300px;
+  perspective: 1000px;
+}
+
+.second-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px rgba(0,0,0,0);
+}
+
+.spin {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
 .pick-words {
   text-align: center;
 }
@@ -119,14 +150,6 @@ hr {
   height: 2.5rem;
   width: 18rem;
   border-radius: .5rem;
-}
-
-@media (min-width: 1000px) {
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 40px
-  }
 }
 
 .grey {

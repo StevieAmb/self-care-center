@@ -9,6 +9,38 @@ body {
   background-image: linear-gradient(rgb(147, 182, 147), #B4D435);
 }
 
+.first-container {
+  background-color: transparent;
+  width: 400px;
+  height: 300px;
+  perspective: 1000px;
+}
+
+.second-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px rgba(0,0,0,0);
+}
+
+.spin {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-back {
+  background-color: white;
+  transform: rotateY(180deg);
+}
+
 .pick-words {
   text-align: center;
 }
@@ -18,7 +50,7 @@ body {
   margin-bottom: 10px;
 }
 
-.user-choice-section {
+.user-choice-section, .flip-card-back {
   text-align: center;
   background-color: #ffffff;
   border-radius: 1rem;
@@ -57,7 +89,7 @@ hr {
   cursor: pointer;
 }
 
-.clear-message-link {
+.clear-message-link, .favorite-messages {
   color: lightskyblue;
   text-decoration: underline;
   cursor: pointer;
@@ -100,6 +132,10 @@ hr {
   margin-top: 3.8rem;
 }
 
+.change-color {
+  background-color: red;
+}
+
 .add-gem-line {
   text-decoration: underline;
 }
@@ -115,14 +151,6 @@ hr {
   height: 2.5rem;
   width: 18rem;
   border-radius: .5rem;
-}
-
-@media (min-width: 1000px) {
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 40px
-  }
 }
 
 .grey {

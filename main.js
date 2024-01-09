@@ -11,7 +11,10 @@ let userInputField = document.getElementById('user-input-message')
 let submitInputButton = document.getElementById('submit-message')
 let favoriteButton = document.getElementById('favorite-button')
 let addedMessage = document.getElementById('added-message')
-let favoriteMessagesCheckbox = document.getElementById('favorite-messages-list-choice')
+let favoriteMessagesLink = document.getElementById('favorite-messages-list-choice')
+let centerBody = document.getElementById('user-choice-section')
+let firstContainer = document.getElementById('first-container')
+let secondContainer = document.getElementById('second-container')
 
 let affirmations = 
 ['I alone hold the truth of who I am.', 
@@ -142,13 +145,21 @@ const checkInputMessageLength = () => {
 const addFavoriteMessage = () => {
   if(mantraRadioButton.checked) {
     hide([favoriteButton])
-    show([addedMessage, favoriteMessagesCheckbox])
+    show([addedMessage, favoriteMessagesLink])
     favoriteAffirmations.push(userMessage.textContent)
+    console.log(favoriteMessagesLink)
   } else {
     hide([favoriteButton])
-    show([addedMessage, favoriteMessagesCheckbox])
+    show([addedMessage, favoriteMessagesLink])
     favoriteMantras.push(userMessage.textContent)
+    console.log(favoriteMessagesLink)
   }
+}
+
+const flipCard = () => {
+  firstContainer.classList.add('spin')
+  secondContainer.classList.add('spin')
+
 }
 
 const show = (elements) => {
@@ -165,6 +176,7 @@ addGem.addEventListener('click', showSubmitGemField)
 submitInputButton.addEventListener('click', checkInputMessageLength)
 userInputField.addEventListener('click', checkForChoiceSelection)
 favoriteButton.addEventListener('click', addFavoriteMessage)
+favoriteMessagesLink.addEventListener('click', flipCard)
 
 //Error messaging that checks the length of the message that is being sent.
 
@@ -176,3 +188,19 @@ favoriteButton.addEventListener('click', addFavoriteMessage)
 //You probably shouldn't be able to click the button either?
 //So disable the button, but keep it green, instead of grey. So there's a separation there,
 //And it makes sense which error you're getting.
+
+
+//Pseudocode for flipping the card.
+//So, as far as I can see with w3 school, there's 
+//two divs that wrap both the front of the card, and the back of the card.
+//So the main contents of the card are wrapped in two divs, so I would need to wrap
+//The main content of the card in two divs.
+//Now, the two divs have two class names that have different
+//names, because the CSS are different,
+//And so those need to be added by the check of the box
+//This means I need to add those CSS styling on click,
+//And add it to each div respectively on click, so that (hopefully) the card turns
+//So, when the check box is checked, or on click of the checkbox,
+//I have to add the styling .classList.add to the wrapping divs
+//This means I need to query the checkbox, so I can ... Maybe U should make the checkbox a link.
+//I will do that.

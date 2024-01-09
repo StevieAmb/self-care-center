@@ -6,41 +6,47 @@
   </head>
   <body>
     <h1 class="page-title">Self-Care Center</h1>
-    <section class="pick-words">
-      <div class="user-choice-section">
-        <div class="choose-favorite-message-list-view hidden" id="favorite-messages-list-choice">
-          <input type="checkbox" id="favorite-messages" name="user-favorites"/>
-          <label for="favorite-messages">See favorites</label>
-        </div>
-        <h3 id="form-title">What type of messages do you need today?</h3>
-        <form>
-          <section class="word-choice-radio-buttons">
-            <div>
-              <input type="radio" id="affirm" name="self-care" value="affirmation"/>
-              <label for="affirm">Affirmation</label>
+    <div class="first-container" id="first-container">
+      <div class="second-container" id="second-container">
+        <section class="pick-words flip-card-front" id="self-care-center-card">
+          <div class="user-choice-section" id="user-choice-section">
+            <div class="choose-favorite-message-list-view hidden" id="favorite-messages-list-choice">
+              <p class="favorite-messages" id="see-favorites">See favorites</p>
             </div>
+            <h3 id="form-title">What type of messages do you need today?</h3>
+            <form>
+              <section class="word-choice-radio-buttons">
+                <div>
+                  <input type="radio" id="affirm" name="self-care" value="affirmation"/>
+                  <label for="affirm">Affirmation</label>
+                </div>
+                <div>
+                  <input type="radio" id="mantra" name="self-care" value="mantra" />
+                  <label for="mantra">Mantra</label>
+                </div>
+              </section>
+              <button id="receive-button" class="submit-receive-message-btn">Receive Message</button>
+            </form>
+            <hr>
             <div>
-              <input type="radio" id="mantra" name="self-care" value="mantra" />
-              <label for="mantra">Mantra</label>
+              <p id="user-message"></p>
+              <img src="assets/heart-shaped vector imahe.png" class="hidden" id="favorite-button" width="30" height="30">
+              <p class="added-message hidden" id="added-message">Added</p>
             </div>
-          </section>
-          <button id="receive-button" class="submit-receive-message-btn">Receive Message</button>
-        </form>
-        <hr>
-        <div>
-          <p id="user-message"></p>
-          <img src="assets/heart-shaped vector imahe.png" class="hidden" id="favorite-button" width="30" height="30">
-          <p class="added-message hidden" id="added-message">Added</p>
-        </div>
-        <div class="user-gems">
-          <input type="text" id="user-input-message" class="user-input-message hidden" placeholder="Enter your gem here..."/>
-          <button id="submit-message" class="submit-receive-message-btn hidden">Submit Gem</button>
-        </div>
-        <img src="assets/meditate.svg" id="meditate-image" width="140" height="140">
-        <p id="clear-link" class="clear-message-link hidden">Clear message?</p>
+            <div class="user-gems">
+              <input type="text" id="user-input-message" class="user-input-message hidden" placeholder="Enter your gem here..."/>
+              <button id="submit-message" class="submit-receive-message-btn hidden">Submit Gem</button>
+            </div>
+            <img src="assets/meditate.svg" id="meditate-image" width="140" height="140">
+            <p id="clear-link" class="clear-message-link hidden">Clear message?</p>
+          </div>
+          <p id="add-gem" class="add-gem-line">Got a gem you never want to forget? <br> Add it here.</p>
+        </section>
+        <section class="flip-card-back">
+          <p>Some stuff</p>
+        </section>
       </div>
-      <p id="add-gem" class="add-gem-line">Got a gem you never want to forget? <br> Add it here.</p>
-    </section>
+    </div>
     <script type="text/javascript" src="main.js"></script>
   </body>
 </html>

@@ -84,7 +84,6 @@ const clearMessage = () => {
 const showSubmitGemField = () => {
   formTitle.textContent = "What type of message are you entering?"
   checkForChoiceSelection()
-  checkInputMessageLength()
   userMessage.classList.remove('error-message')
   hide([meditateImage, receiveButton, userMessage])
   show([userInputField, submitInputButton])
@@ -143,6 +142,10 @@ const checkInputMessageLength = () => {
     submitMessage()
   }
 }
+//SOLVE
+//The user doesn't have to click into the input field when they HAVE
+//made a choice, and the function is called by clicking into the input field, and so
+//That's why it's not showing UP!!!!
 
 const addFavoriteMessage = () => {
   if(mantraRadioButton.checked) {

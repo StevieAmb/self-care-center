@@ -9,6 +9,10 @@ body {
   background-image: linear-gradient(rgb(147, 182, 147), #B4D435);
 }
 
+.page-title {
+  margin-left: 3.7rem;
+}
+
 .first-container {
   background-color: transparent;
   width: 400px;

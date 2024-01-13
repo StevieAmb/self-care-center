@@ -15,6 +15,9 @@ let favoriteMessagesLink = document.getElementById('favorite-messages-list-choic
 let centerBody = document.getElementById('user-choice-section')
 let firstContainer = document.getElementById('first-container')
 let secondContainer = document.getElementById('second-container')
+let backOfCardWords = document.getElementById('back-card-words')
+let favoriteAffirmationsList = document.getElementById('favorite-affirmations-list')
+let favoriteMantrasList = document.getElementById('favorite-mantras-list')
 
 let affirmations = 
 ['I alone hold the truth of who I am.', 
@@ -81,6 +84,7 @@ const clearMessage = () => {
 const showSubmitGemField = () => {
   formTitle.textContent = "What type of message are you entering?"
   checkForChoiceSelection()
+  checkInputMessageLength()
   userMessage.classList.remove('error-message')
   hide([meditateImage, receiveButton, userMessage])
   show([userInputField, submitInputButton])
@@ -129,8 +133,9 @@ const submitMessage = () => {
 }
 
 const checkInputMessageLength = () => {
+  let choiceSelected = affirmRadioButton.checked || mantraRadioButton.checked
   submitInputButton.disabled = false
-  if(userInputField.value.length < 10) {
+  if(choiceSelected && userInputField.value.length < 10) {
     userMessage.classList.add('error-message')
     userMessage.textContent = 'Make sure your message is at least 10 characters in length.'
     submitInputButton.disabled = true
@@ -139,28 +144,34 @@ const checkInputMessageLength = () => {
   }
 }
 
-//The error message shows when I don't pick a type when I am going to submit
-//But it doesn't show when I have picked a type of message to input
-
 const addFavoriteMessage = () => {
   if(mantraRadioButton.checked) {
     hide([favoriteButton])
     show([addedMessage, favoriteMessagesLink])
-    favoriteAffirmations.push(userMessage.textContent)
-    console.log(favoriteMessagesLink)
+    favoriteMantras.push(userMessage.textContent)
+    console.log(favoriteMantras)
   } else {
     hide([favoriteButton])
     show([addedMessage, favoriteMessagesLink])
-    favoriteMantras.push(userMessage.textContent)
-    console.log(favoriteMessagesLink)
+    favoriteAffirmations.push(userMessage.textContent)
+    console.log(favoriteAffirmations)
   }
 }
 
 const flipCard = () => {
   firstContainer.classList.add('spin')
   secondContainer.classList.add('spin')
-
+  backOfCardWords.classList.add('spin')
+  favoriteAffirmations.forEach(affirmation => {
+    favoriteAffirmationsList.insertAdjacentHTML('beforeend', `<p class="favorite-list">${affirmation}<p>`)
+  })
+  favoriteMantras.forEach(mantra => {
+    favoriteMantrasList.insertAdjacentHTML('beforeend', `<p class="favorite-list">${mantra}<p>`)
+  })
 }
+
+//What I need to do to show the favorites list
+//So, pass down the arrays into the flipCard 
 
 const show = (elements) => {
   elements.forEach(element => element.classList.remove('hidden'));

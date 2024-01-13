@@ -34,8 +34,8 @@
               <p class="added-message hidden" id="added-message">Added</p>
             </div>
             <div class="user-gems">
-              <input type="text" id="user-input-message" class="user-input-message hidden" placeholder="Enter your gem here..."/>
-              <button id="submit-message" class="submit-receive-message-btn hidden">Submit Gem</button>
+              <input type="text" id="user-input-message" class="user-input-message hidden" placeholder="Enter your gem here..." pattern=".{5,10}" minlength="8" maxlength="10"/>
+              <input type="submit" id="submit-message" class="submit-receive-message-btn hidden" value="Submit Gem"/>
             </div>
             <img src="assets/meditate.svg" id="meditate-image" width="140" height="140">
             <p id="clear-link" class="clear-message-link hidden">Clear message?</p>
@@ -43,7 +43,10 @@
           <p id="add-gem" class="add-gem-line">Got a gem you never want to forget? <br> Add it here.</p>
         </section>
         <section class="flip-card-back">
-          <p>Some stuff</p>
+          <div id="back-card-words">
+            <h1 id="favorite-affirmations-list">Favorite Affirmations</h1>
+            <h1 id="favorite-mantras-list">Favorite Mantras</h1>
+          </div>
         </section>
       </div>
     </div>

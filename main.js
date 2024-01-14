@@ -79,8 +79,8 @@ const showSelectionErrorMessage = () => {
 
 const clearMessage = () => {
   userMessage.innerHTML = ''
-  meditateImage.classList.remove('hidden')
-  clearLink.classList.add('hidden')
+  show([meditateImage])
+  hide([clearLink, favoriteButton])
 }
 
 const showSubmitGemField = () => {

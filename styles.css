@@ -34,6 +34,10 @@ body {
   transform: rotateY(180deg);
 }
 
+.spin-back {
+  transform: rotateY(0deg);
+}
+
 .flip-card-front, .flip-card-back {
   position: absolute;
   -webkit-backface-visibility: hidden;
@@ -42,6 +46,7 @@ body {
 
 .flip-card-back {
   background-color: white;
+  overflow: scroll;
   transform: rotateY(180deg);
 }
 

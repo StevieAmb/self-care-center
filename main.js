@@ -15,9 +15,11 @@ let favoriteMessagesLink = document.getElementById('favorite-messages-list-choic
 let centerBody = document.getElementById('user-choice-section')
 let firstContainer = document.getElementById('first-container')
 let secondContainer = document.getElementById('second-container')
+let backOfCard = document.getElementById('flip-card-back')
 let backOfCardWords = document.getElementById('back-card-words')
 let favoriteAffirmationsList = document.getElementById('favorite-affirmations-list')
 let favoriteMantrasList = document.getElementById('favorite-mantras-list')
+let backToMainLink = document.getElementById('back-to-main-link')
 
 let affirmations = 
 ['I alone hold the truth of who I am.', 
@@ -162,9 +164,9 @@ const addFavoriteMessage = () => {
 }
 
 const flipCard = () => {
-  firstContainer.classList.add('spin')
-  secondContainer.classList.add('spin')
-  backOfCardWords.classList.add('spin')
+  firstContainer.classList.remove('spin-back')
+  secondContainer.classList.remove('spin-back')
+  flip([firstContainer, secondContainer, backOfCardWords])
   favoriteAffirmations.forEach(affirmation => {
     favoriteAffirmationsList.insertAdjacentHTML('beforeend', `<p class="favorite-list">${affirmation}<p>`)
   })
@@ -173,8 +175,18 @@ const flipCard = () => {
   })
 }
 
-//What I need to do to show the favorites list
-//So, pass down the arrays into the flipCard 
+let flipBackToMainView = () => {
+  flipBack([firstContainer, secondContainer])
+  console.log('hi')
+}
+
+const flip = (elements) => {
+  elements.forEach(element => element.classList.add('spin'));
+}
+
+const flipBack = (elements) => {
+  elements.forEach(element => element.classList.add('spin-back'));
+}
 
 const show = (elements) => {
   elements.forEach(element => element.classList.remove('hidden'));
@@ -191,6 +203,7 @@ submitInputButton.addEventListener('click', checkInputMessageLength)
 userInputField.addEventListener('click', checkForChoiceSelection)
 favoriteButton.addEventListener('click', addFavoriteMessage)
 favoriteMessagesLink.addEventListener('click', flipCard)
+backToMainLink.addEventListener('click', flipBackToMainView)
 
 //Error messaging that checks the length of the message that is being sent.
 

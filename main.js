@@ -166,9 +166,7 @@ const addFavoriteMessage = () => {
 const flipCard = () => {
   firstContainer.classList.remove('spin-back')
   secondContainer.classList.remove('spin-back')
-  firstContainer.classList.add('spin')
-  secondContainer.classList.add('spin')
-  backOfCardWords.classList.add('spin')
+  flip([firstContainer, secondContainer, backOfCardWords])
   favoriteAffirmations.forEach(affirmation => {
     favoriteAffirmationsList.insertAdjacentHTML('beforeend', `<p class="favorite-list">${affirmation}<p>`)
   })
@@ -178,9 +176,16 @@ const flipCard = () => {
 }
 
 let flipBackToMainView = () => {
-  firstContainer.classList.add('spin-back')
-  secondContainer.classList.add('spin-back')
+  flipBack([firstContainer, secondContainer])
   console.log('hi')
+}
+
+const flip = (elements) => {
+  elements.forEach(element => element.classList.add('spin'));
+}
+
+const flipBack = (elements) => {
+  elements.forEach(element => element.classList.add('spin-back'));
 }
 
 const show = (elements) => {

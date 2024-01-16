@@ -154,12 +154,12 @@ const addFavoriteMessage = () => {
     hide([favoriteButton])
     show([addedMessage, favoriteMessagesLink])
     favoriteMantras.push(userMessage.textContent)
-    console.log(favoriteMantras)
+    listFavoriteMantras(userMessage.textContent)
   } else {
     hide([favoriteButton])
     show([addedMessage, favoriteMessagesLink])
     favoriteAffirmations.push(userMessage.textContent)
-    console.log(favoriteAffirmations)
+    listFavoritesAffirmations(userMessage.textContent)
   }
 }
 
@@ -167,12 +167,14 @@ const flipCard = () => {
   firstContainer.classList.remove('spin-back')
   secondContainer.classList.remove('spin-back')
   flip([firstContainer, secondContainer, backOfCardWords])
-  favoriteAffirmations.forEach(affirmation => {
-    favoriteAffirmationsList.insertAdjacentHTML('beforeend', `<p class="favorite-list">${affirmation}<p>`)
-  })
-  favoriteMantras.forEach(mantra => {
-    favoriteMantrasList.insertAdjacentHTML('beforeend', `<p class="favorite-list">${mantra}<p>`)
-  })
+}
+
+const listFavoritesAffirmations = (affirmation) => {
+      favoriteAffirmationsList.innerHTML += `<p class="favorite-list">${affirmation}<p>`
+}
+
+const listFavoriteMantras = (mantra) => {
+    favoriteMantrasList.innerHTML += `<p class="favorite-list">${mantra}<p>`
 }
 
 let flipBackToMainView = () => {

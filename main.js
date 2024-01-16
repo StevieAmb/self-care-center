@@ -79,15 +79,15 @@ const showSelectionErrorMessage = () => {
 
 const clearMessage = () => {
   userMessage.innerHTML = ''
-  meditateImage.classList.remove('hidden')
-  clearLink.classList.add('hidden')
+  show([meditateImage])
+  hide([clearLink, favoriteButton])
 }
 
 const showSubmitGemField = () => {
   formTitle.textContent = "What type of message are you entering?"
   checkForChoiceSelection()
   userMessage.classList.remove('error-message')
-  hide([meditateImage, receiveButton, userMessage])
+  hide([meditateImage, receiveButton, userMessage, favoriteButton])
   show([userInputField, submitInputButton])
   showUserInputErrorMessage()
 }

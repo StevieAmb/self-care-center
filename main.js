@@ -88,7 +88,7 @@ const showSubmitGemField = () => {
   formTitle.textContent = "What type of message are you entering?"
   checkForChoiceSelection()
   userMessage.classList.remove('error-message')
-  hide([meditateImage, receiveButton, userMessage, favoriteButton])
+  hide([meditateImage, receiveButton, userMessage, favoriteButton, clearLink])
   show([userInputField, submitInputButton])
   showUserInputErrorMessage()
 }

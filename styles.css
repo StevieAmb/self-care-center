@@ -72,6 +72,7 @@ body {
   width: 30vw;
   height: 70vh;
   box-shadow: -3px 2px 5px darkgreen;
+  overflow: auto;
 }
 
 hr {

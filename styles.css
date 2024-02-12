@@ -180,6 +180,9 @@ hr {
     font-size: 35px;
   }
 
+  .radio-label {
+    font-size: 28px;
+  }
 
   .pick-words {
     margin: 2rem -10.5rem;
@@ -195,6 +198,10 @@ hr {
 
   #form-title {
       font-size: 35px;
+  }
+
+  .radio-label {
+    font-size: 28px;
   }
 
   .pick-words {

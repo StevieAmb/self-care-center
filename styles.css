@@ -115,32 +115,23 @@ hr {
 }
 
 .added-message {
-  font-style: italic;
   font-size: small;
-  -moz-animation: cssAnimation 0s ease-in 1s forwards;
-  /* Firefox */
-  -webkit-animation: cssAnimation 0s ease-in 1s forwards;
-  /* Safari and Chrome */
-  -o-animation: cssAnimation 0s ease-in 1s forwards;
-  /* Opera */
-  animation: cssAnimation 0s ease-in 1s forwards;
-  -webkit-animation-fill-mode: forwards;
-  animation-fill-mode: forwards;
-}
-@keyframes cssAnimation {
-  from {
-      width:0;
-      height:0;
-      overflow: hidden;
-  }
-}
-@-webkit-keyframes cssAnimation {
-  to {
-      width:0;
-      height:0;
-      visibility: hidden;
-  }
+  font-style: italic;
+  animation: flashAnimation 5s forwards; 
 } 
+
+@keyframes flashAnimation {
+  0% {
+    opacity: 1; /* Fully visible */
+  }
+  50% {
+    opacity: 0; /* Invisible */
+  }
+  100% {
+    opacity: 0; /* Fully visible again */
+  }
+}
+
 
 #user-message {
   margin-top: 3.8rem;
@@ -176,5 +167,28 @@ hr {
   display: none;
   /* visibility: hidden;
   overflow: hidden; */
+}
+
+@media screen and (max-width: 1092px) {
+  .user-choice-section {
+    width: 45rem;
+    height: 55rem;
+  }
+
+  .pick-words {
+    margin: 2rem -10.5rem;
+  }
+}
+
+/* On screens that are 600px or less, set the background color to olive */
+@media screen and (max-width: 600px) {
+  .user-choice-section {
+    width: 45rem;
+    height: 55rem;
+  }
+
+  .pick-words {
+    margin: 2rem -10.5rem;
+  }
 }
 

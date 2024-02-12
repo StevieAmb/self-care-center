@@ -57,10 +57,10 @@ const showUserChoice = (e) => {
   userMessage.classList.remove('error-message')
   if(affirmRadioButton.checked) {
     userMessage.textContent = `${affirmations[getRandomIndex(affirmations)]}`
-    favoriteButton.classList.remove('hidden')
+    show([favoriteButton])
   } else if (mantraRadioButton.checked) {
     userMessage.textContent = `${mantras[getRandomIndex(mantras)]}`
-    favoriteButton.classList.remove('hidden')
+    show([favoriteButton])
   } else {
     showSelectionErrorMessage()
   }
@@ -81,7 +81,7 @@ const showSelectionErrorMessage = () => {
 const clearMessage = () => {
   userMessage.innerHTML = ''
   show([meditateImage])
-  hide([clearLink, favoriteButton])
+  hide([clearLink, favoriteButton, addedMessage])
 }
 
 const showSubmitGemField = () => {
@@ -145,20 +145,17 @@ const checkInputMessageLength = () => {
     submitMessage()
   }
 }
-//SOLVE
-//The user doesn't have to click into the input field when they HAVE
-//made a choice, and the function is called by clicking into the input field, and so
-//That's why it's not showing UP!!!!
 
 const addFavoriteMessage = () => {
   if(mantraRadioButton.checked) {
     hide([favoriteButton])
     show([addedMessage, favoriteMessagesLink])
+    addedMessage.classList.add('added-message')
     favoriteMantras.push(userMessage.textContent)
     listFavoriteMantras(userMessage.textContent)
   } else {
     hide([favoriteButton])
-    show([addedMessage, favoriteMessagesLink])
+    show([addedMessage,favoriteMessagesLink])
     favoriteAffirmations.push(userMessage.textContent)
     listFavoritesAffirmations(userMessage.textContent)
   }

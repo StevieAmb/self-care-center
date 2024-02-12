@@ -176,6 +176,11 @@ hr {
     height: 55rem;
   }
 
+  #form-title {
+    font-size: 35px;
+  }
+
+
   .pick-words {
     margin: 2rem -10.5rem;
   }
@@ -186,6 +191,10 @@ hr {
   .user-choice-section {
     width: 45rem;
     height: 55rem;
+  }
+
+  #form-title {
+      font-size: 35px;
   }
 
   .pick-words {

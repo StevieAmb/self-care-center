@@ -153,11 +153,17 @@ const addFavoriteMessage = () => {
     addedMessage.classList.add('added-message')
     favoriteMantras.push(userMessage.textContent)
     listFavoriteMantras(userMessage.textContent)
+    setTimeout(() => { 
+      hide([addedMessage]) 
+    }, 2000)
   } else {
     hide([favoriteButton])
     show([addedMessage,favoriteMessagesLink])
     favoriteAffirmations.push(userMessage.textContent)
     listFavoritesAffirmations(userMessage.textContent)
+    setTimeout(() => { 
+      hide([addedMessage]) 
+    }, 2000)
   }
 }
 
